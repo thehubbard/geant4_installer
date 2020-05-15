@@ -1,19 +1,25 @@
+# Forked
+Forked from original [cmake_geant4](https://github.com/wdconinc/cmake_geant4) and modified.
+This version has been designed to be installed without admin to the local scratch disk where there is sufficient storage space at the University of Surrey.
+
+# Geant4
 [Geant4](https://cern.ch/geant4/) is a toolkit for the simulation of the passage of particles through matter developed at CERN. It is popular in nuclear and particle phyiscs.
 
 # Synopsis
 
 ```
-cmake_geant4.sh <version>
+geant4_install.sh <version>
 ```
 
 # Description
 
-This script downloads and builds Geant4 from the source distribution. It installs the resulting binaries in `/usr/local/geant4/<version>`. Multiple versions can be installed next to each other, and the desired version can be loaded by sourcing the file `bin/geant4.sh`.
+This script downloads and builds Geant4 from the source distribution. It installs the resulting binaries in `/scratch/applications/geant4-<version>`. 
+Multiple versions can be installed next to each other, and the desired version can be loaded by sourcing the file `bin/geant4.sh`.
 
 # Examples
 
 ```
-./cmake_geant4.sh 4.10.02.p02
+./geant4_install.sh 4.10.02.p02
 ```
 
 # License
