@@ -9,21 +9,16 @@
 #               How to Run
 ##################################
 #
-# OLD
-# http://geant4.cern.ch/support/source/geant4.${version}.tar.gz
-# NEW
-# http://cern.ch/geant4-data/releases/geant4.${version}.tar.gz
-#
 # From terminal
 # chmod +x scratch_geant4.sh
 #
 #./scratch_geant4.sh <version>
 #
-# ./scratch_geant4.sh 10.02.p02
+# ./scratch_geant4.sh 10.2.2
 #
 #      <version> format
 # Geant 4 version 00 . sub 00 . patch  p00 (if applicable)
-#       .   10    .   02   . p02
+#       .   10    .   2   . 2
 
 
 version=$1
@@ -33,14 +28,15 @@ cd /scratch/
 mkdir -p applications
 cd applications
 
-echo "Downloading geant4.${version}.tar.gz..."
-until test -f geant4.${version}.tar.gz
-do wget http://cern.ch/geant4-data/releases/geant4.${version}.tar.gz
+
+echo "Downloading geant4-v${version}.tar.gz..."
+until test -f geant4-v${version}.tar.gz
+do wget https://gitlab.cern.ch/geant4/geant4/-/archive/v${version}/geant4-v${version}.tar.gz
 done
 
-echo "Unpacking geant4.${version}.tar.gz..."
-until test -d geant4.${version}
-do tar -zxvf geant4.${version}.tar.gz
+echo "Unpacking geant4-v${version}.tar.gz..."
+until test -d geant4-v${version}
+do tar -zxvf geant4-v${version}.tar.gz
 done
 
 mkdir -p geant4.${version}-build
@@ -59,7 +55,7 @@ cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo \
  -DGEANT4_USE_SYSTEM_CLHEP=OFF \
  -DGEANT4_USE_SYSTEM_EXPAT=ON \
  -DXERCESC_LIBRARY=/usr/lib/x86_64-linux-gnu/libxerces-c.so \
- ../geant4.${version}
+ ../geant4.v-${version}
 
 j=`cat /proc/cpuinfo | grep processor | wc -l`
 echo "Make will use $j parallel jobs."
